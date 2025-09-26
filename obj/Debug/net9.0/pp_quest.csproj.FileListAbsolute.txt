@@ -1,0 +1,14 @@
+/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_quest/bin/Debug/net9.0/pp_quest
+/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_quest/bin/Debug/net9.0/pp_quest.deps.json
+/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_quest/bin/Debug/net9.0/pp_quest.runtimeconfig.json
+/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_quest/bin/Debug/net9.0/pp_quest.dll
+/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_quest/bin/Debug/net9.0/pp_quest.pdb
+/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_quest/obj/Debug/net9.0/pp_quest.GeneratedMSBuildEditorConfig.editorconfig
+/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_quest/obj/Debug/net9.0/pp_quest.AssemblyInfoInputs.cache
+/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_quest/obj/Debug/net9.0/pp_quest.AssemblyInfo.cs
+/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_quest/obj/Debug/net9.0/pp_quest.csproj.CoreCompileInputs.cache
+/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_quest/obj/Debug/net9.0/pp_quest.dll
+/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_quest/obj/Debug/net9.0/refint/pp_quest.dll
+/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_quest/obj/Debug/net9.0/pp_quest.pdb
+/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_quest/obj/Debug/net9.0/pp_quest.genruntimeconfig.cache
+/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_quest/obj/Debug/net9.0/ref/pp_quest.dll
