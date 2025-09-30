@@ -12,7 +12,7 @@ O repository por sua vez é usada como uma camada de abstracao para esses dois c
 
  No contexto de Domain-Driven Design Repository trabalha especificamente com agregados. Esta
  é uma das características fundamentais que distingue o padrão Repository de outras abstrações de
- acesso a dados. Segundo Eric Evans:
+ acesso a dados:
  • Cada Repository gerencia apenas um tipo de agregado (não entidades individuais dentro do
  agregado)
  • O Repository recupera e persiste o agregado como uma unidade completa
