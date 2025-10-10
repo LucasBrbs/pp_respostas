@@ -4,16 +4,26 @@ O livro *Refactoring to Patterns* (Joshua Kerievsky, 2004) não introduz novos p
 
 ## Exemplos de Refatorações
 
-### 1. Código cheio de `if/else` → Replace Conditional with Polymorphism → Strategy
+### 1. Código cheio de `if/else` → trocar condicional por polimorfismo
 
 **Antes (com if/else):**
 ```python
-class Shipping:
-    def __init__(self, type):
-        self.type = type
+class Frete:
+    def __init__(self, tipo):
+        self.tipo = tipo
 
-    def calculate(self, order):
-        if self.type == "standard":
-            return order * 1.0
-        elif self.type == "express":
-            return order * 1.5
+    def calcular(self, pedido):
+        if self.tipo == "padrao":
+            return pedido * 1.0
+        elif self.tipo == "expresso":
+            return pedido * 1.5
+        elif self.tipo == "internacional":
+            return pedido * 2.5
+        elif self.tipo == "urgente":
+            return pedido * 3.0
+        elif self.tipo == "economico":
+            return pedido * 0.8
+        else:
+            return pedido  # frete padrão caso tipo não seja reconhecido
+
+
