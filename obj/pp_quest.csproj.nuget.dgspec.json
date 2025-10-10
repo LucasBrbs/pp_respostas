@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_quest/pp_quest.csproj": {}
+    "/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_respostas/pp_quest.csproj": {}
   },
   "projects": {
-    "/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_quest/pp_quest.csproj": {
+    "/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_respostas/pp_quest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_quest/pp_quest.csproj",
+        "projectUniqueName": "/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_respostas/pp_quest.csproj",
         "projectName": "pp_quest",
-        "projectPath": "/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_quest/pp_quest.csproj",
+        "projectPath": "/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_respostas/pp_quest.csproj",
         "packagesPath": "/Users/lucasbarbosadeoliveira/.nuget/packages/",
-        "outputPath": "/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_quest/obj/",
+        "outputPath": "/Users/lucasbarbosadeoliveira/Documents/faculdade/pp_respostas/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/lucasbarbosadeoliveira/.nuget/NuGet/NuGet.Config"

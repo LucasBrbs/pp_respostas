@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("pp_quest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1ad856aadc19e19bdcc21803014df1186e4495d")]
 [assembly: System.Reflection.AssemblyProductAttribute("pp_quest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("pp_quest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
