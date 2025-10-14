@@ -1,7 +1,3 @@
-Claro — aqui está o conteúdo formatado no **padrão README.md**, sem emojis e com explicações curtas e objetivas sobre cada refatoração:
-
----
-
 # Refactoring to Patterns (Joshua Kerievsky, 2004)
 
 O livro **Refactoring to Patterns** mostra como transformar código legado ou mal estruturado em código mais limpo e flexível, aplicando padrões de projeto conhecidos.
@@ -9,7 +5,7 @@ A seguir, são apresentados dois exemplos práticos de refatoração com seus re
 
 ---
 
-## 1. Replace Conditional with Polymorphism → Padrão **Strategy**
+## 1. Substituir Conditional por Polymorphism → Padrão **Strategy**
 
 ### Antes da refatoração
 
@@ -75,7 +71,7 @@ A lógica condicional foi eliminada. Agora, novos tipos de frete podem ser criad
 
 ---
 
-## 2. Move Embellishment to Decorator → Padrão **Decorator**
+## 2. Mudar Embellishment para Decorator → Padrão **Decorator**
 
 ### Antes da refatoração
 
