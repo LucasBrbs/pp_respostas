@@ -66,6 +66,43 @@ frete = CalculadoraFrete(FreteExpresso())
 print(f"Valor do frete: {frete.calcular(pedido)}")
 ```
 
+***Versão com interface fluente*
+```python
+class RelatorioBase:
+    def gerar(self):
+        return "Relatório base"
+
+    # métodos fluentes
+    def com_borda(self):
+        return BordaDecorator(self)
+
+    def com_negrito(self):
+        return NegritoDecorator(self)
+
+
+class DecoradorRelatorio:
+    def __init__(self, relatorio):
+        self.relatorio = relatorio
+
+    def gerar(self):
+        return self.relatorio.gerar()
+
+
+class BordaDecorator(DecoradorRelatorio):
+    def gerar(self):
+        return "====\n" + self.relatorio.gerar() + "\n===="
+
+
+class NegritoDecorator(DecoradorRelatorio):
+    def gerar(self):
+        return "**" + self.relatorio.gerar() + "**"
+
+
+# Exemplo de uso com interface fluente
+relatorio = RelatorioBase().com_borda().com_negrito()
+print(relatorio.gerar())
+```
+
 **Benefício:**
 A lógica condicional foi eliminada. Agora, novos tipos de frete podem ser criados apenas adicionando novas classes de estratégia, sem alterar o código existente.
 
