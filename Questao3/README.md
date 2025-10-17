@@ -1,4 +1,4 @@
-### Pergunta
+# Pergunta
 O livro GoF (1994) é clássico, mas 30 anos depois nem todos os 23 padrões continuam
 relevantes. Alguns foram absorvidos por linguagens modernas, outros considerados
 overengineering, e alguns praticamente caíram em desuso. Entre os padrões do GoF mais criticados
@@ -21,6 +21,8 @@ linguagens com garbage collector e construtores ricos.
 Pelo texto acima, vocês percebem que os padrões criacionais foram substituídos pela Injeção de
 Dependência, disponível em frameworks modernos. Mostre, por meio de código, essa afirmação,
 explicitando as vantagens da DI em relação aos padrões criacionais. 
+
+# Resposta
 
 ````markdown
 #  Padrões Criacionais vs Injeção de Dependência (DI)
