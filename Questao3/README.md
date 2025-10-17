@@ -4,16 +4,20 @@ relevantes. Alguns foram absorvidos por linguagens modernas, outros considerados
 overengineering, e alguns praticamente caíram em desuso. Entre os padrões do GoF mais criticados
 e menos usados hoje, temos:
 Singleton
+
 • Crítica: promove global state, dificulta testes, acoplamento forte.
 • Status: amplamente desencorajado; substituído por Dependency Injection.
+
 Abstract Factory
 • Crítica: muita verbosidade, excesso de interfaces/classes só para criação de objetos.
 • Status: em linguagens modernas (Java com DI/Spring, C# com IoC, Python dinâmico),
 tornou-se raramente necessário.
+
 Prototype
 • Crítica: duplicação de objetos via clone() se mostrou pouco prática, especialmente em
 linguagens com garbage collector e construtores ricos.
 • Status: pouco usado fora de contextos muito específicos (ex.: jogos ou DSLs)
+
 Pelo texto acima, vocês percebem que os padrões criacionais foram substituídos pela Injeção de
 Dependência, disponível em frameworks modernos. Mostre, por meio de código, essa afirmação,
 explicitando as vantagens da DI em relação aos padrões criacionais. 
