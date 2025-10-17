@@ -25,11 +25,6 @@ explicitando as vantagens da DI em relação aos padrões criacionais.
 # Resposta
 
 ````markdown
-#  Padrões Criacionais vs Injeção de Dependência (DI)
-
-Este documento mostra, por meio de **exemplos em Python**, como os **padrões criacionais clássicos do GoF (1994)** — como **Singleton**, **Factory** e **Prototype** — foram **substituídos pela Injeção de Dependência (Dependency Injection)** em frameworks e arquiteturas modernas.
-
----
 
 ##  Cenário Proposto
 
