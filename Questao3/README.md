@@ -1,4 +1,4 @@
-#Pergunta
+### Pergunta
 O livro GoF (1994) é clássico, mas 30 anos depois nem todos os 23 padrões continuam
 relevantes. Alguns foram absorvidos por linguagens modernas, outros considerados
 overengineering, e alguns praticamente caíram em desuso. Entre os padrões do GoF mais criticados
