@@ -210,5 +210,3 @@ O que antes era apenas uma lista de objetos sendo notificados (GoF), hoje se tor
 - Em **RxJS**, para dados assíncronos contínuos.
 - Em **React**, para interfaces reativas.
 
-O conceito central é o mesmo:  
-**“Algo muda → quem está observando reage automaticamente.”**
