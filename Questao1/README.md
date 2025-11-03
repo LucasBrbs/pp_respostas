@@ -23,7 +23,7 @@ Ele organiza e expõe métodos amigáveis para a aplicação, podendo aplicar **
 
 
 ```csharp
-# DAO
+# DAO: foco em operações CRUD diretas
 using System;
 using System.Data.SqlClient;
 
@@ -78,7 +78,7 @@ class Program
     }
 }
 
-#Data Mapper
+#Data Mapper: converte objetos ↔ tabelas
 using System;
 using System.Data.SqlClient;
 
@@ -119,7 +119,7 @@ class Program
     }
 }
 
-# Repository 
+# Repository: representa a coleção de agregados, aplica regras de negócio
 using System;
 using System.Data.SqlClient;
 
@@ -199,8 +199,12 @@ class Program
         Console.WriteLine(user.Nome);
     }
 }
+```
+DAO e Data Mapper focam em persistência de dados; Repository foca em consistência e regras do domínio, sendo mais alinhado com DDD.
 
+```csharp
 # AGREGADO E INVARIANTES (DDD)
+# O Pedido é o agregado; o ItemPedido só pode ser manipulado através dele, garantindo as invariantes de consistência.
 using System;
 using System.Collections.Generic;
 
@@ -233,3 +237,6 @@ public interface IPedidoRepository {
     Pedido ObterPorId(Guid id);
     void Salvar(Pedido pedido);
 }
+```
+
+
