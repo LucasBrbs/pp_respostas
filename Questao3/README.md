@@ -1,32 +1,25 @@
-## Cenário Proposto
+Questão 3 – Padrões Criacionais e Injeção de Dependência
+Cenário Proposto
 
-O exemplo gira em torno de uma **conexão com uma API de usuários**.  
-A classe `APIConnection` simula uma conexão com uma API (ex.: `https://api.exemplo.com`), e o serviço `UserService` utiliza essa conexão para buscar informações de usuários.
+O exemplo gira em torno de uma conexão com uma API de usuários.
+A classe APIConnection simula uma conexão com uma API (por exemplo: https://api.exemplo.com
+), e o serviço UserService utiliza essa conexão para buscar informações de usuários.
 
-O mesmo cenário é implementado de **quatro formas diferentes**:
-1. Singleton Pattern  
-2. Abstract Factory Pattern  
-3. Prototype Pattern  
-4. Dependency Injection (moderno)
+A seguir, o mesmo cenário é implementado de quatro formas diferentes, demonstrando a evolução dos padrões criacionais até a abordagem moderna com Injeção de Dependência (DI).
 
----
+1. Singleton Pattern
 
-## Singleton Pattern
+Ideia
+Garante que apenas uma instância da classe exista em todo o sistema.
 
-### Ideia
-Garantir que apenas **uma instância** da classe exista no sistema.
+Aplicação
+Usado quando é necessário controlar um recurso global, como logs, cache ou configurações.
 
-### Aplicação
-Usado quando se quer controlar um recurso global, como logs ou configurações.
-
-### Exemplo em Python
-
-```python
 class APIConnection:
     _instance = None
 
     def __new__(cls, base_url):
-        # Se ainda não existe uma instância, cria uma
+        # Se ainda não existe instância, cria uma
         if cls._instance is None:
             print("Criando conexão única com a API...")
             cls._instance = super(APIConnection, cls).__new__(cls)
@@ -39,7 +32,7 @@ class APIConnection:
 
 class UserService:
     def __init__(self):
-        # Aqui o serviço depende diretamente do Singleton
+        # O serviço depende diretamente do Singleton
         self.api = APIConnection("https://api.exemplo.com")
 
     def get_user(self, user_id):
@@ -48,37 +41,28 @@ class UserService:
 # Testando
 service1 = UserService()
 service2 = UserService()
-
 service1.get_user(1)
 service2.get_user(2)
 print(service1.api is service2.api)  # True → é a mesma instância
-```
 
-### Desvantagens
 
-* Cria um **estado global** difícil de controlar.
-* Prejudica testes, pois não é fácil substituir a dependência.
-* Aumenta o acoplamento entre as classes.
+Desvantagens
+Cria dependências globais difíceis de controlar, prejudica testes e aumenta o acoplamento entre as classes.
 
----
+2. Abstract Factory Pattern
 
-## Abstract Factory Pattern
+Ideia
+Fornece uma interface para criar famílias de objetos relacionados sem expor suas classes concretas.
 
-### Ideia
-Fornecer uma **interface para criar famílias de objetos relacionados**, sem especificar suas classes concretas.
+Aplicação
+Usado quando há diferentes variações de objetos (por exemplo, conexões de API para ambientes de produção e teste).
 
-### Aplicação
-Usado quando há diferentes variações de produtos que seguem a mesma interface (ex.: conexões de API diferentes para ambientes distintos).
-
-### Exemplo em Python
-
-```python
 # Interface base para conexões
 class APIConnection:
     def get(self, endpoint):
         raise NotImplementedError
 
-# Implementação concreta para o ambiente de produção
+# Conexão real de produção
 class ProductionAPIConnection(APIConnection):
     def __init__(self):
         self.base_url = "https://api.exemplo.com"
@@ -87,7 +71,7 @@ class ProductionAPIConnection(APIConnection):
     def get(self, endpoint):
         print(f"[GET] {self.base_url}/{endpoint}")
 
-# Implementação concreta para o ambiente de testes
+# Conexão de teste
 class TestAPIConnection(APIConnection):
     def __init__(self):
         self.base_url = "https://api.teste.com"
@@ -101,12 +85,11 @@ class APIConnectionFactory:
     def create_connection(self):
         raise NotImplementedError
 
-# Fábrica concreta para produção
+# Fábricas concretas
 class ProductionFactory(APIConnectionFactory):
     def create_connection(self):
         return ProductionAPIConnection()
 
-# Fábrica concreta para teste
 class TestFactory(APIConnectionFactory):
     def create_connection(self):
         return TestAPIConnection()
@@ -120,7 +103,7 @@ class UserService:
     def get_user(self, user_id):
         self.api.get(f"users/{user_id}")
 
-# Testando o uso das fábricas
+# Testando
 factory = ProductionFactory()
 service_prod = UserService(factory)
 service_prod.get_user(5)
@@ -128,27 +111,20 @@ service_prod.get_user(5)
 factory_teste = TestFactory()
 service_teste = UserService(factory_teste)
 service_teste.get_user(99)
-```
 
-### Desvantagens
 
-* Muita **verbosidade**: várias classes e interfaces só para criar objetos.
-* Mantém **acoplamento indireto** à fábrica concreta.
-* Pouco necessário em linguagens modernas que já possuem injeção de dependências.
+Desvantagens
+É um padrão mais verboso, com muitas classes apenas para criação de objetos.
+Em frameworks modernos, ele é raramente necessário, pois a DI já resolve o mesmo problema com menos código.
 
----
+3. Prototype Pattern
 
-## Prototype Pattern
+Ideia
+Cria novos objetos clonando um protótipo existente, em vez de instanciá-los diretamente.
 
-### Ideia
-Criar novos objetos clonando um protótipo existente em vez de instanciá-los do zero.
+Aplicação
+Usado quando a criação de objetos é custosa, e clonar é mais eficiente.
 
-### Aplicação
-Usado quando a criação de um objeto é custosa, e clonar é mais rápido.
-
-### Exemplo em Python
-
-```python
 import copy
 
 class APIConnection:
@@ -156,7 +132,7 @@ class APIConnection:
         self.base_url = base_url
 
     def clone(self):
-        # Retorna uma cópia rasa do objeto atual
+        # Retorna uma cópia do objeto atual
         return copy.copy(self)
 
     def get(self, endpoint):
@@ -165,7 +141,7 @@ class APIConnection:
 # Protótipo base
 prototype = APIConnection("https://api.exemplo.com")
 
-# Clonando novas conexões
+# Criando clones a partir do protótipo
 conn1 = prototype.clone()
 conn2 = prototype.clone()
 
@@ -176,29 +152,23 @@ class UserService:
     def get_user(self, user_id):
         self.api.get(f"users/{user_id}")
 
+# Uso
 service = UserService(conn1)
 service.get_user(42)
-```
 
-### Desvantagens
 
-* `clone()` adiciona complexidade sem necessidade em muitos casos.
-* Pouco útil em linguagens com construtores simples e coletores de lixo.
-* Mais usado em contextos específicos, como jogos ou simulações.
+Desvantagens
+Adicionar clone() traz complexidade desnecessária em linguagens modernas com construtores simples e coletores de lixo.
+É útil apenas em contextos específicos, como jogos ou simulações complexas.
 
----
+4. Dependency Injection (moderno)
 
-## Dependency Injection (moderno)
+Ideia
+As dependências são passadas de fora para dentro da classe, em vez de criadas internamente.
 
-### Ideia
-As dependências são **injetadas de fora da classe**, em vez de criadas dentro dela.
+Aplicação
+Usado em frameworks modernos (Spring, .NET, FastAPI, NestJS) para reduzir acoplamento e facilitar testes.
 
-### Aplicação
-Usado em frameworks modernos (como Spring, .NET, NestJS ou FastAPI) para reduzir acoplamento e facilitar testes.
-
-### Exemplo em Python
-
-```python
 class APIConnection:
     def __init__(self, base_url):
         self.base_url = base_url
@@ -209,59 +179,52 @@ class APIConnection:
 
 class UserService:
     def __init__(self, api_connection):
-        # Aqui o serviço recebe a dependência de fora
+        # O serviço recebe a dependência de fora
         self.api = api_connection
 
     def get_user(self, user_id):
         self.api.get(f"users/{user_id}")
 
-# A injeção é feita de forma explícita
+# Injeção manual da dependência
 api = APIConnection("https://api.exemplo.com")
 user_service = UserService(api)
 user_service.get_user(7)
-```
 
-### Teste com Mock
 
-```python
+Teste com Mock
+
 # Classe mock simulando a API real
 class MockAPI:
     def get(self, endpoint):
         print(f"[MOCK] Simulando requisição: {endpoint}")
 
-# Injetando o mock no serviço
+# Injetando o mock
 mock_api = MockAPI()
 test_service = UserService(mock_api)
 test_service.get_user(123)
-```
 
-### Vantagens
 
-* **Desacoplamento** total entre as classes.
-* **Facilidade para testar**, pois é simples trocar a dependência real por um mock.
-* **Reuso e flexibilidade**: basta injetar outra implementação.
-* Código mais simples e de fácil manutenção.
+Vantagens
 
----
+Desacoplamento total entre as classes.
 
-## Comparativo Geral
+Facilidade de testes (é simples substituir dependências).
 
-| Padrão                   | Vantagens                                   | Desvantagens                                |
-| ------------------------ | ------------------------------------------- | ------------------------------------------- |
-| **Singleton**            | Uma instância única e global                | Dificulta testes e cria dependências ocultas |
-| **Abstract Factory**     | Permite criar famílias de objetos           | Verboso e raramente necessário hoje          |
-| **Prototype**            | Evita recriação de objetos custosos         | Pouco útil em linguagens modernas            |
-| **Dependency Injection** | Simples, testável e flexível                 | Requer controle externo ou framework de DI   |
+Reuso e flexibilidade: basta injetar outra implementação.
 
----
+Código mais limpo e sustentável.
 
-## Conclusão
+Conclusão
 
-Os **padrões criacionais do GoF** resolveram problemas de instanciação comuns nos anos 1990.  
-Porém, em linguagens e frameworks atuais, a **Injeção de Dependência** passou a resolver esses problemas de forma mais limpa e direta.
+Os padrões criacionais do GoF foram essenciais para resolver problemas de instanciação nas décadas passadas.
+No entanto, frameworks modernos tornaram essas soluções mais simples por meio da Injeção de Dependência, que substitui com eficiência a maioria dos casos de uso dos padrões clássicos.
 
 A DI:
 
-* reduz o acoplamento entre classes;
-* facilita a manutenção e os testes;
-* torna o código mais simples e sustentável.
+reduz o acoplamento entre as classes;
+
+facilita manutenção e testes;
+
+promove código limpo e modular, aberto para extensão e fechado para modificação.
+
+Em resumo, a DI representa a evolução natural dos padrões criacionais para o desenvolvimento atual.
