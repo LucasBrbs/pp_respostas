@@ -20,9 +20,10 @@ Ele organiza e expõe métodos amigáveis para a aplicação, podendo aplicar **
 
 ---
 
-# DAO
+
 
 ```csharp
+# DAO
 using System;
 using System.Data.SqlClient;
 
