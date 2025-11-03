@@ -1,4 +1,4 @@
-Questão 4 – Comparação entre o Observer Clássico e suas Aplicações Modernas
+## Questão 4 – Comparação entre o Observer Clássico e suas Aplicações Modernas
 
 O padrão Observer permite que um objeto (o Subject) notifique automaticamente uma lista de observers quando seu estado muda.
 Embora tenha sido criado há décadas, ele serve de base para diversos sistemas modernos — do Node.js ao React.
@@ -11,7 +11,7 @@ Este exemplo implementa o padrão original descrito no livro GoF.
 O Subject mantém uma lista de observadores e os notifica sempre que ocorre uma mudança.
 
 # Implementação manual do padrão Observer em Python
-
+```csharp
 class Subject:
     def __init__(self):
         # Lista de observadores interessados nos eventos
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     subject.attach(obs2)
 
     subject.notify({"evento": "login", "usuario": "lucas"})
-
+```
 
 Resumo:
 O Subject controla os observadores e dispara notificações.
@@ -63,7 +63,7 @@ Cada Observer reage individualmente, implementando o método update().
 
 Em Node.js, o padrão Observer já vem implementado na classe EventEmitter.
 Cada evento é um Subject, e os listeners são os observadores.
-
+```csharp
 // Node.js — Exemplo com EventEmitter
 const EventEmitter = require('events');
 
@@ -91,7 +91,7 @@ canal.emit('user_login', { user: 'lucas', hora: '08:00' });
 // Removendo um listener
 canal.removeListener('user_login', analyticsListener);
 canal.emit('user_login', { user: 'maria', hora: '08:10' });
-
+```
 
 Resumo:
 
@@ -106,7 +106,7 @@ removeListener() cancela a observação.
 
 O RxJS expande o conceito de Observer para trabalhar com fluxos contínuos de dados (streams).
 Aqui, Subject e subscribe() substituem o modelo manual do GoF.
-
+```csharp
 // RxJS — Exemplo simples de Observer reativo
 import { Subject } from 'rxjs';
 
@@ -125,7 +125,7 @@ subject.subscribe({
 // Envio de eventos (notificação)
 subject.next({ evento: 'login', usuario: 'lucas' });
 subject.next({ evento: 'logout', usuario: 'maria' });
-
+```
 
 Resumo:
 
@@ -140,7 +140,7 @@ O mesmo padrão Observer aplicado em programação reativa e assíncrona.
 
 O React aplica o Observer internamente: quando um estado muda, o componente é re-renderizado.
 O useEffect atua como observador de variáveis declaradas como dependências.
-
+```csharp
 // React — Exemplo com useEffect
 import React, { useState, useEffect } from 'react';
 
@@ -163,7 +163,7 @@ function Contador() {
 }
 
 export default Contador;
-
+```
 
 Resumo:
 
