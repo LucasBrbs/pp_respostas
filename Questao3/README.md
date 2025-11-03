@@ -14,7 +14,7 @@ Garante que apenas uma instância da classe exista em todo o sistema.
 
 Aplicação
 Usado quando é necessário controlar um recurso global, como logs, cache ou configurações.
-
+```csharp
 class APIConnection:
     _instance = None
 
@@ -44,7 +44,7 @@ service2 = UserService()
 service1.get_user(1)
 service2.get_user(2)
 print(service1.api is service2.api)  # True → é a mesma instância
-
+```
 
 Desvantagens
 Cria dependências globais difíceis de controlar, prejudica testes e aumenta o acoplamento entre as classes.
@@ -56,7 +56,7 @@ Fornece uma interface para criar famílias de objetos relacionados sem expor sua
 
 Aplicação
 Usado quando há diferentes variações de objetos (por exemplo, conexões de API para ambientes de produção e teste).
-
+```csharp
 # Interface base para conexões
 class APIConnection:
     def get(self, endpoint):
@@ -111,7 +111,7 @@ service_prod.get_user(5)
 factory_teste = TestFactory()
 service_teste = UserService(factory_teste)
 service_teste.get_user(99)
-
+```
 
 Desvantagens
 É um padrão mais verboso, com muitas classes apenas para criação de objetos.
@@ -124,7 +124,7 @@ Cria novos objetos clonando um protótipo existente, em vez de instanciá-los di
 
 Aplicação
 Usado quando a criação de objetos é custosa, e clonar é mais eficiente.
-
+```csharp
 import copy
 
 class APIConnection:
@@ -155,7 +155,7 @@ class UserService:
 # Uso
 service = UserService(conn1)
 service.get_user(42)
-
+```
 
 Desvantagens
 Adicionar clone() traz complexidade desnecessária em linguagens modernas com construtores simples e coletores de lixo.
@@ -168,7 +168,7 @@ As dependências são passadas de fora para dentro da classe, em vez de criadas 
 
 Aplicação
 Usado em frameworks modernos (Spring, .NET, FastAPI, NestJS) para reduzir acoplamento e facilitar testes.
-
+```csharp
 class APIConnection:
     def __init__(self, base_url):
         self.base_url = base_url
@@ -202,7 +202,7 @@ class MockAPI:
 mock_api = MockAPI()
 test_service = UserService(mock_api)
 test_service.get_user(123)
-
+```
 
 Vantagens
 
