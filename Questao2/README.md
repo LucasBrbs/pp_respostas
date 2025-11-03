@@ -9,6 +9,7 @@ Antes da refatoração
 
 O código original usa vários blocos if/else para definir o tipo de frete. Esse modelo é difícil de manter, pois qualquer novo tipo exige alterar a classe principal.
 
+```csharp
 class Frete:
     def __init__(self, tipo):
         self.tipo = tipo
@@ -22,13 +23,13 @@ class Frete:
             return pedido * 2.0
         else:
             raise ValueError("Tipo de frete inválido")
-
+```
 
 Depois da refatoração (usando Strategy)
 
 Cada tipo de frete é uma classe separada, que implementa uma mesma interface.
 Assim, é possível adicionar novos comportamentos sem modificar código existente.
-
+```csharp
 from abc import ABC, abstractmethod
 
 # Interface comum para as estratégias
@@ -64,7 +65,7 @@ class CalculadoraFrete:
 pedido = 100
 frete = CalculadoraFrete(FreteExpresso())
 print(f"Valor do frete: {frete.calcular(pedido)}")
-
+```
 
 Benefício:
 A lógica condicional desaparece, e novos tipos de frete são adicionados sem alterar a classe principal.
@@ -74,7 +75,7 @@ A lógica condicional desaparece, e novos tipos de frete são adicionados sem al
 Antes da refatoração
 
 A classe Relatorio possuía várias responsabilidades extras (negrito, borda, etc.), o que dificultava a manutenção.
-
+```csharp
 class Relatorio:
     def gerar(self):
         return "Relatório base"
@@ -84,13 +85,14 @@ class Relatorio:
 
     def gerar_em_negrito(self):
         return "**" + self.gerar() + "**"
-
+```
 
 Depois da refatoração (usando Decorator)
 
 As responsabilidades adicionais são movidas para decoradores independentes.
 Cada um adiciona sua própria funcionalidade, sem alterar o código da classe base.
 
+```csharp
 # Classe base simples
 class RelatorioBase:
     def gerar(self):
@@ -124,7 +126,7 @@ class NegritoDecorator(DecoradorRelatorio):
 # Exemplo de uso encadeado
 relatorio = RelatorioBase().com_borda().com_negrito()
 print(relatorio.gerar())
-
+```
 
 Benefício:
 Permite adicionar ou remover funcionalidades dinamicamente. O código fica mais modular e segue o princípio da responsabilidade única.
@@ -134,7 +136,7 @@ Permite adicionar ou remover funcionalidades dinamicamente. O código fica mais 
 Antes da refatoração
 
 O código criava objetos concretos diretamente dentro da lógica, o que dificultava a troca de implementações e os testes.
-
+```csharp
 class BotaoWindows:
     def exibir(self):
         print("Botão do Windows exibido")
@@ -148,13 +150,13 @@ botao = BotaoWindows()
 janela = JanelaWindows()
 botao.exibir()
 janela.renderizar()
-
+```
 
 Depois da refatoração (usando Abstract Factory)
 
 A criação dos objetos é movida para uma fábrica abstrata, que define um contrato para famílias de produtos.
 Isso permite trocar todo o “tema” (Windows, Mac, etc.) sem alterar o código cliente.
-
+```csharp
 from abc import ABC, abstractmethod
 
 # Interfaces de produto
@@ -216,7 +218,7 @@ def renderizar_interface(factory: UIFactory):
 # Exemplo de uso
 factory = MacFactory()
 renderizar_interface(factory)
-
+```
 
 Benefício:
 O código cliente fica independente das classes concretas.
