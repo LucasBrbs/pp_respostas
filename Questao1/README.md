@@ -4,7 +4,7 @@ Este README contém toda a explicação conceitual, comparativa e prática dos p
 
 ---
 
-## 🧩 Questão 1
+## Questão 1
 
 ### a) Compare-os no nível conceitual.
 
