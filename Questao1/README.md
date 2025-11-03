@@ -1,4 +1,4 @@
-# 🧠 Comparação entre DAO, Data Mapper e Repository com exemplos em C#
+# Comparação entre DAO, Data Mapper e Repository com exemplos em C#
 
 Este README contém toda a explicação conceitual, comparativa e prática dos padrões **DAO**, **Data Mapper** e **Repository**, além de um exemplo sobre **Agregado e Invariantes** no contexto de **DDD (Domain-Driven Design)**.
 
