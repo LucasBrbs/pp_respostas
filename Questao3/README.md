@@ -218,13 +218,3 @@ Conclusão
 
 Os padrões criacionais do GoF foram essenciais para resolver problemas de instanciação nas décadas passadas.
 No entanto, frameworks modernos tornaram essas soluções mais simples por meio da Injeção de Dependência, que substitui com eficiência a maioria dos casos de uso dos padrões clássicos.
-
-A DI:
-
-reduz o acoplamento entre as classes;
-
-facilita manutenção e testes;
-
-promove código limpo e modular, aberto para extensão e fechado para modificação.
-
-Em resumo, a DI representa a evolução natural dos padrões criacionais para o desenvolvimento atual.
